@@ -12,6 +12,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import pl.krzysiek.file.que.simulator.model.HardDrive;
+import pl.krzysiek.file.que.simulator.model.HardDriveGui;
 import pl.krzysiek.file.que.simulator.model.QueHandler;
 import pl.krzysiek.file.que.simulator.model.UserContainer;
 
@@ -71,8 +72,16 @@ public class MainViewController implements Initializable {
     private List<HardDrive> hardDrives = new LinkedList<>();
 
 
+    private List<HardDriveGui> hardDriveGuis = new LinkedList<>();
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        hardDriveGuis.add(new HardDriveGui(nameFile1, progressBar1, userId1));
+        hardDriveGuis.add(new HardDriveGui(nameFile2, progressBar2, userId2));
+        hardDriveGuis.add(new HardDriveGui(nameFile3, progressBar3, userId3));
+        hardDriveGuis.add(new HardDriveGui(nameFile4, progressBar4, userId4));
 
         userContainer = new UserContainer();
         userContainer.generateUsers();
@@ -112,7 +121,6 @@ public class MainViewController implements Initializable {
             userContainer.generateUsers();
             userContainer.getUsers().forEach(user -> listOfUsers.getItems().add(user.toString()));
 
-//            new Thread(queHandler).start();
         });
     }
 
@@ -134,37 +142,20 @@ public class MainViewController implements Initializable {
 
     private void refreshHardDisk() {
 
+
         while (true) {
             Platform.runLater(() -> {
-                if (hardDrives.get(0).getActualFile().getFilename() != null) {
-                    nameFile1.setText(hardDrives.get(0).getActualFile().getFilename());
-                    progressBar1.setProgress(hardDrives.get(0).getActualProgress());
-                } else {
-                    nameFile1.setText("-");
-                    progressBar1.setProgress(0);
+                for (int i = 0; i < 4; i++) {
+                    if (hardDrives.get(i) != null
+                            && hardDrives.get(i).getActualFile() != null
+                            && hardDrives.get(i).getActualFile().getFilename() != null) {
+                        hardDriveGuis.get(i).getNameFileLabel().setText(hardDrives.get(i).getActualFile().getFilename());
+                        hardDriveGuis.get(i).getProgressBar().setProgress(hardDrives.get(i).getActualProgress());
+                    } else {
+                        hardDriveGuis.get(i).getNameFileLabel().setText("-");
+                        hardDriveGuis.get(i).getProgressBar().setProgress(0);
+                    }
                 }
-                if (hardDrives.get(1) != null && hardDrives.get(1).getActualFile() != null && hardDrives.get(1).getActualFile().getFilename() != null) {
-                    nameFile2.setText(hardDrives.get(1).getActualFile().getFilename());
-                    progressBar2.setProgress(hardDrives.get(1).getActualProgress());
-                } else {
-                    nameFile2.setText("-");
-                    progressBar2.setProgress(0);
-                }
-                if (hardDrives.get(2).getActualFile().getFilename() != null) {
-                    nameFile3.setText(hardDrives.get(2).getActualFile().getFilename());
-                    progressBar3.setProgress(hardDrives.get(2).getActualProgress());
-                } else {
-                    nameFile3.setText("-");
-                    progressBar3.setProgress(0);
-                }
-                if (hardDrives.get(3).getActualFile().getFilename() != null) {
-                    nameFile4.setText(hardDrives.get(3).getActualFile().getFilename());
-                    progressBar4.setProgress(hardDrives.get(3).getActualProgress());
-                } else {
-                    nameFile4.setText("-");
-                    progressBar4.setProgress(0);
-                }
-
             });
             try {
                 Thread.sleep(500);
