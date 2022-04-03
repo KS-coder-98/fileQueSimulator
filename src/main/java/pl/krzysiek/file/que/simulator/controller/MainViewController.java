@@ -7,16 +7,23 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import pl.krzysiek.file.que.simulator.model.UserContainer;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
+    private static final Logger logger = LogManager.getLogger(MainViewController.class);
+
     @FXML
     private Button btnGenerate;
 
     @FXML
-    private ListView<?> listOfUsers;
+    private ListView<String> listOfUsers;
 
     @FXML
     private Label nameFile1;
@@ -57,5 +64,17 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        UserContainer userContainer = new UserContainer();
+        userContainer.generateUsers();
+
+
+
+        btnGenerate.setOnAction(actionEvent -> {
+            logger.info("click generate button");
+            listOfUsers.getItems().clear();
+            userContainer.getUsers().clear();
+            userContainer.generateUsers();
+            userContainer.getUsers().forEach(user -> listOfUsers.getItems().add(user.toString()));
+        });
     }
 }
