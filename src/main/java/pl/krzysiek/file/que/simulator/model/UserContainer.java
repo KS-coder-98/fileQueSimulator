@@ -13,7 +13,7 @@ public class UserContainer {
 
     public void generateUsers(){
         Random random = new Random();
-        int numberOfUsers = random.nextInt(1,10);
+        int numberOfUsers = random.nextInt(1,8);
         for (int i = 0; i< numberOfUsers; i++){
             User user = new User();
             user.initUser();

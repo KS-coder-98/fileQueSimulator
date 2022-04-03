@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek.file.que.simulator.controller.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek.file.que.simulator.controller.MainViewController">
    <children>
-      <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
+      <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0">
          <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <children>
                   <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dysk 1" VBox.vgrow="ALWAYS" />
                   <Label fx:id="userId1" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="userId1" VBox.vgrow="ALWAYS" />
@@ -20,7 +20,7 @@
                   <ProgressBar fx:id="progressBar1" maxWidth="1.7976931348623157E308" prefWidth="200.0" progress="0.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <children>
                   <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dysk 2" VBox.vgrow="ALWAYS" />
                   <Label fx:id="userId2" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="userId2" VBox.vgrow="ALWAYS" />
@@ -28,7 +28,7 @@
                   <ProgressBar fx:id="progressBar2" maxWidth="1.7976931348623157E308" prefWidth="200.0" progress="0.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <VBox layoutX="210.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox layoutX="210.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <children>
                   <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dysk 3" VBox.vgrow="ALWAYS" />
                   <Label fx:id="userId3" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="userId3" VBox.vgrow="ALWAYS" />
@@ -36,7 +36,7 @@
                   <ProgressBar fx:id="progressBar3" maxWidth="1.7976931348623157E308" prefWidth="200.0" progress="0.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <VBox layoutX="410.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox layoutX="410.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <children>
                   <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dysk 4" VBox.vgrow="ALWAYS" />
                   <Label fx:id="userId4" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="userId4" VBox.vgrow="ALWAYS" />
@@ -46,8 +46,8 @@
             </VBox>
          </children>
       </HBox>
-      <ListView fx:id="listOfUsers" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="btnGenerate" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="GENERATE">
+      <ListView fx:id="listOfUsers" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Button fx:id="btnGenerate" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" text="GENERATE">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>

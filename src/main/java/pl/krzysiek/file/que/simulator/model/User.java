@@ -18,7 +18,7 @@ public class User {
 
     private void generateFilesForUser() {
         Random random = new Random();
-        int numbersOfFiles = random.nextInt(1,10);
+        int numbersOfFiles = random.nextInt(5,15);
         for (int i = 0; i < numbersOfFiles; i++) {
             File file = new File();
             file.initFile();
