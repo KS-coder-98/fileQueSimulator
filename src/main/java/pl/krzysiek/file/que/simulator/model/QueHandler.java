@@ -2,8 +2,6 @@ package pl.krzysiek.file.que.simulator.model;
 
 import lombok.Data;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,8 +17,9 @@ public class QueHandler implements Runnable {
     @Override
     public void run() {
         while (true) {
-            var freeHardDrives = hardDrives
-                    .stream().filter(HardDrive::getFree).collect(Collectors.toList());
+            var freeHardDrives = hardDrives.stream()
+                    .filter(HardDrive::getFree).collect(Collectors.toList());
+
             if (!freeHardDrives.isEmpty()) {
                 HardDrive hardDrive = freeHardDrives.get(0);
                 LinkedList<File> files = new LinkedList<>();
@@ -28,13 +27,8 @@ public class QueHandler implements Runnable {
                         .filter(user -> !user.getFiles().isEmpty())
                         .forEach(user -> files.add(user.getFiles().get(0)));
 
+                files.forEach(file -> file.calculatePriority(userContainer.getUsers().size()));
 
-                for (var f : files) {
-                    long l = Duration.between(f.getStartWaitingTime(), LocalDateTime.now()).toHours();
-                    var temp = Math.sqrt(l) / userContainer.getUsers().size() + Math.pow(f.getSizeOfFile(), -1)
-                            * userContainer.getUsers().size();
-                    f.setPriority(temp);
-                }
                 files.sort(Comparator.comparing(File::getPriority, Comparator.reverseOrder()));
                 hardDrive.setActualFile(files.get(0));
 

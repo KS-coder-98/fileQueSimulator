@@ -2,11 +2,12 @@ package pl.krzysiek.file.que.simulator.model;
 
 import lombok.Data;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Random;
 
 @Data
-public class File{
+public class File {
 
     public static int id = 0;
 
@@ -20,6 +21,11 @@ public class File{
         filename = "file_" + id++;
         sizeOfFile = generator.nextInt(2, 100);
         startWaitingTime = LocalDateTime.now().minusHours(generator.nextInt(100));
+    }
+
+    public void calculatePriority(int numbersOfUser) {
+        long l = Duration.between(this.getStartWaitingTime(), LocalDateTime.now()).toHours();
+        this.setPriority(Math.sqrt(l) / numbersOfUser + Math.pow(this.getSizeOfFile(), -1) * numbersOfUser);
     }
 
     @Override
