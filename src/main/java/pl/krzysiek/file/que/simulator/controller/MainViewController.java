@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
-
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import pl.krzysiek.file.que.simulator.model.HardDrive;
@@ -17,7 +15,6 @@ import pl.krzysiek.file.que.simulator.model.QueHandler;
 import pl.krzysiek.file.que.simulator.model.UserContainer;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -101,9 +98,9 @@ public class MainViewController implements Initializable {
         listOfUsers.getItems().clear();
         userContainer.getUsers().forEach(user -> listOfUsers.getItems().add(user.toString()));
 
-        Thread threadSimulatedFuel = new Thread(this::refreshUserList);
-        threadSimulatedFuel.setDaemon(true);
-        threadSimulatedFuel.start();
+        Thread threadRefreshUserList = new Thread(this::refreshUserList);
+        threadRefreshUserList.setDaemon(true);
+        threadRefreshUserList.start();
 
         Thread threadHardDrive1 = new Thread(this::refreshHardDisk);
         threadHardDrive1.setDaemon(true);
