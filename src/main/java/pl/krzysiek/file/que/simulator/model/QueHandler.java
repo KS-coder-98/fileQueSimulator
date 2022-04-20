@@ -32,7 +32,7 @@ public class QueHandler implements Runnable {
                 files.sort(Comparator.comparing(File::getPriority, Comparator.reverseOrder()));
                 hardDrive.setActualFile(files.get(0));
 
-
+                //z maina
                 userContainer.getUsers().forEach(user -> user.getFiles().remove(files.get(0)));
                 userContainer.setUsers(userContainer.getUsers().stream().filter(user -> !user.getFiles().isEmpty())
                         .collect(Collectors.toList()));
