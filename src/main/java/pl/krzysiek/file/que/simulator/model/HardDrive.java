@@ -9,6 +9,7 @@ public class HardDrive implements Runnable{
     private Double actualProgress;
     private Boolean free;
     private File actualFile;
+    private String nameOfUser;
 
     public void saveFile() {
         free = false;

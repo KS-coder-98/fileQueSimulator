@@ -148,6 +148,7 @@ public class MainViewController implements Initializable {
                             && hardDrives.get(i).getActualFile().getFilename() != null) {
                         hardDriveGuis.get(i).getNameFileLabel().setText(hardDrives.get(i).getActualFile().getFilename());
                         hardDriveGuis.get(i).getProgressBar().setProgress(hardDrives.get(i).getActualProgress());
+                        hardDriveGuis.get(i).getUserIdLabel().setText(hardDrives.get(i).getActualFile().getNameOfOwner());
                     } else {
                         hardDriveGuis.get(i).getNameFileLabel().setText("-");
                         hardDriveGuis.get(i).getProgressBar().setProgress(0);

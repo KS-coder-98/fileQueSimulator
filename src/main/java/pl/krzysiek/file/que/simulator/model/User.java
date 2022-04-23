@@ -13,15 +13,15 @@ public class User {
 
     public void initUser(){
         userId = id++;
-        generateFilesForUser();
+        generateFilesForUser(userId);
     }
 
-    private void generateFilesForUser() {
+    private void generateFilesForUser(Long userId) {
         Random random = new Random();
         int numbersOfFiles = random.nextInt(5,15);
         for (int i = 0; i < numbersOfFiles; i++) {
             File file = new File();
-            file.initFile();
+            file.initFile(userId);
             files.add(file);
         }
         files.sort(Comparator.comparingInt(File::getSizeOfFile));

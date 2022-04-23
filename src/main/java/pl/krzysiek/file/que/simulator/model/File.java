@@ -15,12 +15,14 @@ public class File {
     private Integer sizeOfFile;
     private LocalDateTime startWaitingTime;
     private Double priority;
+    private String nameOfOwner;
 
-    public void initFile() {
+    public void initFile(Long userId) {
         Random generator = new Random();
         filename = "file_" + id++;
         sizeOfFile = generator.nextInt(2, 100);
         startWaitingTime = LocalDateTime.now().minusHours(generator.nextInt(100));
+        nameOfOwner = "userId" + userId;
     }
 
     public void calculatePriority(int numbersOfUser) {
